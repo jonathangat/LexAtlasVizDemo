@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chart Demo - Lex Atlas</title>
+</head>
+
+<body>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+
+    <figure class="highcharts-figure">
+        <div id="c3"></div>
+    </figure>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <script>
+        // c3
+        Highcharts.chart('c3', {
+            chart: {
+                type: 'column',
+                events: {
+                    load: function () {
+                        this.renderer.image('img/lex_logo.svg', 600, 50, 50, 56).add();
+                    }
+                }
+            },
+            title: {
+                text: 'Duration in Months of Sunset Provisions for Emergency Declarations',
+                align: 'left'
+            },
+            subtitle: {
+                text: 'Source: Lex-Atlas-19, Emergency Powers dataset, available at: <a href="https://lexatlas-c19.org">lexatlas-c19.org</a>',
+                align: 'left'
+
+            },
+            xAxis: {
+                categories: [
+                    '<2 months',
+                    '3-6 months',
+                    '7-12 months'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Duration in Months of Sunset Provisions for Emergency Declarations'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Total',
+                color: '#A2B8B5',
+                data: [10, 8, 3]
+
+            }]
+        });
+    </script>
+
+</body>
+
+</html>

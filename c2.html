@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chart Demo - Lex Atlas</title>
+</head>
+
+<body>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+
+    <figure class="highcharts-figure">
+        <div id="c2"></div>
+    </figure>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <script>
+        // C2
+        Highcharts.chart('c2', {
+            chart: {
+                type: 'column',
+                renderTo: 'container',
+                events: {
+                    load: function () {
+                        this.renderer.image('img/lex_logo.svg', 570, 0, 50, 56).add();
+                    }
+
+                }
+            },
+            title: {
+                text: 'Sunset Provisions',
+                align: 'left'
+            },
+            subtitle: {
+                text: 'Source: Lex-Atlas-19, Emergency Powers dataset, available at: <a href="https://lexatlas-c19.org">lexatlas-c19.org</a>',
+                align: 'left'
+            },
+            xAxis: {
+                categories: ['Sunset provision - emergency declaration', 'Sunset provision - statute', 'Sunset provisions - stay at home', 'Sunset provision - individual regulations']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Percentage'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'Yes',
+                data: [23, 15, 17, 26],
+                color: '#A2B8B5'
+            }, {
+                name: 'No',
+                data: [9, 3, 8, 16],
+
+                color: '#8FAADD'
+
+            }]
+        });
+    </script>
+
+</body>
+
+</html>
