@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chart Demo - Lex Atlas</title>
+</head>
+
+<body>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+
+    <figure class="highcharts-figure">
+        <div id="c2"></div>
+    </figure>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <script>
+        // C9
+        Highcharts.chart('c2', {
+            chart: {
+                type: 'column',
+                renderTo: 'container',
+                events: {
+                    load: function () {
+                        this.renderer.image('img/lex_logo.svg', 570, 0, 50, 56).add();
+                    }
+
+                }
+            },
+            title: {
+                text: 'Operation of Parliament during the Covid-19 Pandemic',
+                align: 'left'
+            },
+            subtitle: {
+                text: 'Hybrid and overall functioning of parliamentary proceedings',
+                align: 'left'
+            },
+            credits: {
+                text: 'Sources: Lex-Atlas: Covid-19 – Parliaments dataset',
+                href: 'https://lexatlas-c19.org'
+            },
+            xAxis: {
+                categories: ['Virtual/Hybrid in Chamber', 'Virtual/Hybrid in Committee', 'Reduced Parliamentary Debate', 'Reduction of Committees']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Percentage'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'Yes',
+                data: [21, 31, 26, 28],
+                color: '#A2B8B5'
+            }, {
+                name: 'No',
+                data: [25, 15, 20, 18],
+
+                color: '#8FAADD'
+
+            }]
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chart Demo - Lex Atlas</title>
+</head>
+
+<body>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+
+    <figure class="highcharts-figure">
+        <div id="c8"></div>
+    </figure>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <script>
+        // C8
+        Highcharts.chart('c8', {
+
+            title: {
+                text: 'System Type and Parliamentary Closures', align: 'left'
+            },
+            subtitle: {
+                text:
+                    'Alluvial plot between government system type and parliamentary closures.'
+                , align: 'left'
+            },
+            credits: {
+                text: 'Sources: Lex-Atlas: Covid-19 – Parliaments dataset and IPU Parline',
+                href: 'https://lexatlas-c19.org'
+            },
+            accessibility: {
+                point: {
+                    valueDescriptionFormat: '{index}. {point.from} to {point.to}, {point.weight}.'
+                }
+            },
+            tooltip: {
+                headerFormat: null,
+                pointFormat:
+                    '{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight:.0f} countries',
+                nodeFormat: '{point.name}: {point.sum:.2f} quads'
+            },
+            series: [{
+                keys: ['from', 'to', 'weight'],
+
+                nodes: [
+                    {
+                        id: 'Presidential-Parliamentary',
+                        color: '#BF98A0'
+                    },
+                    {
+                        id: 'Presidential',
+                        color: '#84DCCF'
+                    },
+                    {
+                        id: 'Parliamentary',
+                        color: '#A6D9F7'
+                    },
+                    {
+                        id: 'Communist',
+                        color: '#BCCCE0'
+                    },
+                    {
+                        id: 'Yes',
+                        color: '#989898',
+
+                    },
+                    {
+                        id: 'No',
+                        color: '#989898',
+                    }
+                ],
+
+                data: [
+                    ['Presidential-Parliamentary', 'No', 6],
+                    ['Presidential-Parliamentary', 'Yes', 4],
+                    ['Presidential', 'No', 8],
+                    ['Presidential', 'Yes', 4],
+                    ['Parliamentary', 'No', 14],
+                    ['Parliamentary', 'Yes', 9],
+
+                    ['Communist', 'Yes', 2],
+
+
+
+
+                ],
+                type: 'sankey',
+                name: 'Sankey demo series'
+            }]
+
+        });
+
+    </script>
+
+</body>
+
+</html>

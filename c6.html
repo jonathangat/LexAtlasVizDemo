@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chart Demo - Lex Atlas</title>
+</head>
+
+<body>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+
+    <figure class="highcharts-figure">
+        <div id="c6"></div>
+    </figure>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <script>
+        // c6
+        Highcharts.chart('c6', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                events: {
+                    load: function () {
+                        this.renderer.image('img/lex_logo.svg', 600, 50, 50, 56).add();
+                    }
+                }
+            },
+            title: {
+                text: 'Political System across Countries',
+                align: 'left'
+            },
+            subtitle: {
+                text: 'Source: IPU-Parline',
+                align: 'left'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+
+                    }
+                }
+            },
+            series: [{
+                name: 'Political System',
+                colorByPoint: true,
+                data: [{
+                    name: 'Parliamentary',
+                    color: '#7E9BC8',
+
+                    y: 23,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'Communist',
+                    color: '#B6C3DC',
+
+                    y: 2
+                },
+                {
+                    name: 'Presidential',
+                    color: '#3C6494',
+
+                    y: 12
+                },
+                {
+                    name: 'Semi-presidential',
+                    color: '#4978B1',
+
+                    y: 10
+                }
+                ]
+            }]
+        });
+    </script>
+
+</body>
+
+</html>
