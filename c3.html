@@ -45,7 +45,11 @@
                 align: 'left'
 
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
+                title: { text: 'Duration in Months of Sunset Provisions for Emergency Declarations' },
                 categories: [
                     '<2 months',
                     '3-6 months',
@@ -54,15 +58,12 @@
                 crosshair: true
             },
             yAxis: {
-                min: 0,
-                title: {
-                    text: 'Duration in Months of Sunset Provisions for Emergency Declarations'
-                }
+                title: { text: 'Count' }
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f} countries</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
